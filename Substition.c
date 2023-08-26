@@ -3,7 +3,7 @@
 #include <string.h>
 int main(){
   const char letters[] = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q'};
-  char *cipher = malloc(26); 	//This will allocation enough space for the cipher key
+  char *cipher = malloc(26); 	//This will allocate enough space for the cipher key
   char *s = malloc(26);		//Plaint text that the user will provide
   char *cip = malloc(26);	//The cipher key that will be printed to stdout.
   puts("Enter the cipher code: ");
