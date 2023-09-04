@@ -1,57 +1,72 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 struct node {
   int data;
-  struct node *next;
+  struct node *next; 
 };
+void printlist(struct node *n);
+void insertfirst(struct node **n, int data);
+void insertlast(struct node **n, int data);
+int getlast(struct node *last);
+int main (void){
+  //Declaration of first and second node
+  struct node *first, *last;
+  //Allocate enough memory to hold the struct node
+  first = malloc(sizeof(struct node));
+  last = malloc(sizeof(struct node));
+  //Initialize value for the data field of the node
+  first->data = 1;
+  last->data = 2;
+  //Connect the nodes;
+  first->next = last;
+  last->next = NULL;
+  ///////////////////////////////////////////////
+  insertfirst(&first,25);
+  printlist(first);
+  insertlast(&last, 99);
+  printlist(first);
+  printf("%d\n", first->data);
+  int x = getlast(first);
+    
+  ////////////
+}
 
-void printList(struct node *p){
-  while(p != NULL){
-    printf("%d --> ",p->data);
-    p = p->next;
+void printlist(struct node *n){
+  while(n != NULL){
+    printf("%d --> ",n->data);
+    n = n->next;
   }
   puts("NULL");
 }
 
-void insertFirst(struct node **p, int data){
+void insertfirst(struct node **n, int data){
   struct node *temp;
   temp = malloc(sizeof(struct node));
   temp->data = data;
-  temp->next = *p;
-  *p = temp;
+  temp->next = *n;
+  *n = temp;
 }
 
-void insertLast(struct node **p, int data){
-  struct node *temp, *newNode;
+void insertlast(struct node **n, int data){
+  struct node *temp, *newnode;
   temp = malloc(sizeof(struct node));
-  newNode = malloc(sizeof(struct node));
-  newNode->data = data;
-  temp = *p;
+  newnode = malloc(sizeof(struct node));
+  newnode->data = data;
+  temp = *n;
   while(temp->next != NULL){
     temp = temp->next;
   }
-  temp->next = newNode;
-  
+  temp->next = newnode;
 }
 
-
-int main(void){
-
-  struct node *one,*two,*three,*head;
-  one = malloc(sizeof(struct node));
-  two = malloc(sizeof(struct node));
-  three = malloc(sizeof(struct node));
-
-  one->data = 10;
-  two->data = 20;
-  three->data = 30;
-
-  one->next = two;
-  two->next = three;
-  three->next = NULL;
-  head = one;
-  insertFirst(&head,5);
-  insertLast(&head,25);
-  printList(head);
-
+int getlast(struct node *last){
+  int x;
+  while(last != NULL){
+    last = last->next;
+  }
+  x = last->data;
+  return x;
 }
+
+//TODO: finish the getlast func
