@@ -27,7 +27,6 @@ int main (void){
   insertlast(&last, 99);
   printlist(first);
   printf("%d\n", first->data);
-  int x = getlast(first);
     
   ////////////
 }
