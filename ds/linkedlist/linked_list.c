@@ -4,6 +4,8 @@
 #include "linked_list.h"
 
 int main(void){
-  initalize();
-  print_nodes(head);
+  insert_first(&head);
+  printlist(head);
+  insert_first(&head);
+  printlist(head);
 }
